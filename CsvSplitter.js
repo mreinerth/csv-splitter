@@ -29,7 +29,7 @@ CsvSplitter.prototype = {
 
         // refactor with generator or stream, so you can use reader.nextLine() without looping indexes. I = 1 is error-prone.
         for (let i = 1; i < this._csvReader.length(); ++i) { //i = 1 to skip header
-            if (i % maxEntries === 0) {
+            if ((i-1) % maxEntries === 0 && i!=1) {
 
                 csvWriter.write(this._getNextFileName());
                 csvWriter = null;
